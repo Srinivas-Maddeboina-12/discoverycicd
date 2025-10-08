@@ -12,6 +12,7 @@ spring:
       server:
         git:
           uri: https://github.com/Srinivas-Maddeboina-12/config-repo.git
+          username: ${GitHubUsername}
+          password: ${PersonalAccessToken}
           clone-on-start: true
-          # optional: pick a branch
           default-label: main
