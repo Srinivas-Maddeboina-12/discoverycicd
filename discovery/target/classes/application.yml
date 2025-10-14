@@ -1,5 +1,5 @@
 server:
-  port: 8888
+  port: 8081
 
 spring:
   flyway:
@@ -12,17 +12,19 @@ spring:
     url: jdbc:mysql://localhost:3306/dev
     username: root
     password: Reigns@123
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 0
+      idle-timeout: 120000
+      max-lifetime: 1200000
+      connection-timeout: 30000
+      leak-detection-threshold: 20000
+      pool-name: HRMSPool
   profiles:
     active: dev
   application:
-    name: config-server
+    name: discovery
     label: main
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/Srinivas-Maddeboina-12/config-repo.git
-          username: ${GitHubUsername}
-          password: ${PersonalAccessToken}
-          clone-on-start: true
-          default-label: main
+
+  config:
+    import: "optional:configserver:http://localhost:8888"
