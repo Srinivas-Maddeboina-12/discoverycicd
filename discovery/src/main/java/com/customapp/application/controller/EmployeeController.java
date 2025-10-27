@@ -1,5 +1,6 @@
 package com.customapp.application.controller;
 
+import com.customapp.application.dto.EmployeeDto;
 import com.customapp.application.model.Employee;
 import com.customapp.application.service.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,7 +27,7 @@ public class EmployeeController {
 
     @Operation(summary = "Add a new employee", description = "Add a new employee to the system")
     @PostMapping("/employee")
-    public Employee addEmployee(@RequestBody Employee employee){
+    public Employee addEmployee(@RequestBody EmployeeDto employee){
         return employeeService.addEmployee(employee);
     }
 }
